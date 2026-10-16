@@ -1,22 +1,28 @@
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class principal {
     public static void main(String[] args) {
-        HashMap<Integer, String> produtos = new HashMap<>();
+        HashMap<String, Double> tabelaPrecos = new HashMap<>();
 
-        produtos.put(201, "Café");
-        produtos.put(202, "Azeite");
-        produtos.put(203, "Choocolate");
-        produtos.put(204, "bolacha");
-        produtos.put(205, "macarrão");
+        tabelaPrecos.put("78910", 4.50);
+        tabelaPrecos.put("78920", 8.90);
+        tabelaPrecos.put("78930", 12.00);
+        tabelaPrecos.put("78940", 3.50);
+        tabelaPrecos.put("78950", 5.00);
 
-        System.out.println("Produto 201: " + produtos.get(201));
-        System.out.println("Produto 203: " + produtos.get(203));
-        
-           if (produtos.containsKey(999)) {
-            System.out.println("Produto: " + produtos.get(999));
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Exiba o produto no leitor (Digite o código de barras):");
+        String codigoBarras = scanner.nextLine();
+
+        if (tabelaPrecos.containsKey(codigoBarras)) {
+            Double preco = tabelaPrecos.get(codigoBarras);
+            System.out.println("Produto localizado! Preço: R$ " + preco);
         } else {
-            System.out.println("Produto não encontrado!");
+            System.out.println("Código de barras não identificado. Procure um funcionário.");
         }
+
+        scanner.close();
     }
 }
